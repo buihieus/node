@@ -14,7 +14,7 @@
      </div>    
 
      <div class="table-container">
-      <%= JSON.stringify(listUsers) %>   
+      
       <!-- cú pháp của ejs -->
       <!-- JSON.stringify(listUsers) để in ra danh sách dữ liệu user (nếu chỉ có listUsers ko thì sẽ ko hiện vì nó ko là string) -->
       <div class = "title">List user</div>
@@ -26,34 +26,21 @@
           <th>City</th>
           <th>Action</th>
         </tr>
-        <tr>
-          <td>Peter</td>
-          <td>Griffin</td>
-          <td>$100</td>
-          <td>Springfield</td>
-          <td>
-            <button >Edit</button> |
-            <button >Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Lois</td>
-          <td>Griffin</td>
-          <td>$150</td>
-          <td>Springfield</td>
-        </tr>
-        <tr>
-          <td>Joe</td>
-          <td>Swanson</td>
-          <td>$300</td>
-          <td>Springfield</td>
-        </tr>
-        <tr>
-          <td>Cleveland</td>
-          <td>Brown</td>
-          <td>$250</td>
-          <td>Springfield</td>
-        </tr>
+        <!-- <% for (let i = 0; i < listUsers.length; i++) { %>
+          
+        <% } %> -->
+        <% listUsers.forEach(function(user) { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= user.city %></td>
+            <td>
+              <button >Edit</button> |
+              <button >Delete</button>
+            </td>
+          </tr>
+        <% }); %>
       </table>
      </div>
 
