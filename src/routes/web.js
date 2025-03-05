@@ -13,7 +13,7 @@ router.get('/hieubui',getHieubui)
 
 router.get('/create',getCreatePage)
 
-router.get('/update',getUpdatePage)
+router.get('/update/:id',getUpdatePage)// để lấy ì đằng sau create trong route(id là tên biến)
 
 router.post ('/create-user',postCreateUser)
   
