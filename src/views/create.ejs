@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create A User</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <div class="topnav">
+        <a  href="/">Home</a>
+        <a href="/create" class="active">Create User</a>
+        
+        <!-- thẻ a tương ứng với method get -->
+        <!-- để cái màu xanh hiẹn ở chỗ bạn đã chọn thì chú ý cái class="active" -->
+      </div>
+    <div class="form-add-new">
+      <form action="/create-user" method="post">
+        <fieldset>
+          <legend>Personalia:</legend>
+
+          <div class = "input-group">
+            <label>Email :</label>
+            <input type="text" id = "email" name = "email"/>
+          </div>
+          <!-- de co the console log ra thong tin email,name,phone ngoài khai bao app.use(express.json( )); // Used to parse JSON bodies
+          app.use(express.urlencoded( )); //Parse URL-encoded bodies con phai khai bao name trong cai the input -->
+          <div class = "input-group">
+            <label>Name :</label>
+            <input type="text" name="myname"/>
+          </div>
+
+          <div class = "input-group">
+            <label>City :</label>
+            <input type="text" name = "city"/>
+          </div>
+
+          <div>
+            <button>Add New</button>
+          </div>
+        </fieldset>  
+      </form>
+    </div>
+  
+</head>
+<body>
+    
+</body>
+</html>

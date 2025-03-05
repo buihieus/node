@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/css/style.css">
+<body>
+     <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create User</a>
+        
+        <!-- thẻ a tương ứng với method get -->
+     </div>    
+
+     <div class="table-container">
+      <%= JSON.stringify(listUsers) %>   
+      <!-- cú pháp của ejs -->
+      <!-- JSON.stringify(listUsers) để in ra danh sách dữ liệu user (nếu chỉ có listUsers ko thì sẽ ko hiện vì nó ko là string) -->
+      <div class = "title">List user</div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Peter</td>
+          <td>Griffin</td>
+          <td>$100</td>
+          <td>Springfield</td>
+          <td>
+            <button >Edit</button> |
+            <button >Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Lois</td>
+          <td>Griffin</td>
+          <td>$150</td>
+          <td>Springfield</td>
+        </tr>
+        <tr>
+          <td>Joe</td>
+          <td>Swanson</td>
+          <td>$300</td>
+          <td>Springfield</td>
+        </tr>
+        <tr>
+          <td>Cleveland</td>
+          <td>Brown</td>
+          <td>$250</td>
+          <td>Springfield</td>
+        </tr>
+      </table>
+     </div>
+
+</body>   
+        
+      
+      
+</head>
+
+</html>

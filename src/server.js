@@ -11,20 +11,14 @@ const app = express()// app express
 const port = process.env.PORT || 3000;
 const hostname = process.env.HOST_NAME;
 
+
+// cái này có tác dụng duy nhất hỗ trọ lấy input từ html rồi gửi lên server
+// config req.body
+app.use(express.json( )); // Used to parse JSON bodies
+app.use(express.urlencoded( )); //Parse URL-encoded bodies
+
 // config template engine
 configViewEngine(app);
-
-
-
-// simple query
-// connection.query(
-//   'SELECT * from Users u ', 
-//   function (error, results, fields) {
-//     console.log(">>> results :",results);
-//     // console.log(">>> fields :",fields);
-  
-// })
-
 
 // khai báo route
 app.use('/',webRoutes)
@@ -34,3 +28,8 @@ app.use('/',webRoutes)
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+// cái này có tác dụng duy nhất hỗ trọ lấy input từ html rồi gửi lên server
+// config req.body
+app.use(express.json( )); // Used to parse JSON bodies
+app.use(express.urlencoded( )); //Parse URL-encoded bodies

@@ -4,12 +4,19 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --inspect ./src/server.js",
-    "dev": "node ./src/server.js"
+    "dev": "nodemon --inspect ./src/server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "16.0.3",
+    "ejs": "3.1.8",
+    "express": "^4.21.2",
+    "mysql2": "2.3.3",
+    "node": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
