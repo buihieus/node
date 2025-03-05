@@ -1,5 +1,5 @@
 const express = require('express');
-const {getHomepage, getAboutpage, getHieubui,postCreateUser,getCreatePage} = require('../controllers/homeController')
+const {getHomepage, getAboutpage, getHieubui,postCreateUser,getCreatePage,getUpdatePage} = require('../controllers/homeController')
 const router = express.Router();
 
 //nơi khai báo và thông báo cho express là sẽ gọi cái nào
@@ -12,6 +12,8 @@ router.get('/abc', getAboutpage)
 router.get('/hieubui',getHieubui)
 
 router.get('/create',getCreatePage)
+
+router.get('/update',getUpdatePage)
 
 router.post ('/create-user',postCreateUser)
   
