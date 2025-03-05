@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const {getAllUser,getUsersById} = require('../services/CRUD.Service');
+const {getAllUser,getUsersById,updateUsersById} = require('../services/CRUD.Service');
 
 const getHomepage = async(req, res) => {
    
@@ -27,19 +27,10 @@ const postCreateUser = async  (req, res) => {
     console.log(">> email = ",email,'name = ',name,'city = ',city);
     // hoặc let (email, name, city) = req.body;
 
-    // cú pháp truyền động dữ liệu của mysql2
-    connection.query(
-          `INSERT INTO Users (email,name,city)
-            VALUES (? , ?, ?);`,
-          [email, name,city],
-          function (error, results) {
-
-              res.send("success !")
-          }
-    );
     let [ressullts,fields] = await connection.query(
         `INSERT INTO Users (email,name,city) VALUES (? , ?, ?);`,[email, name,city],
   );
+  res.send("success !")
 
   console.log(">> results", results);
     // connection.query(
@@ -60,11 +51,26 @@ const getUpdatePage = async (req, res) => {
     let user =await getUsersById(userId);
     res.render('edit.ejs',{userEdit : user})// trái :tên biến truyền qua view, phải: giá trị mình gán cho nó , x<-y
 }
+
+const postUpdateUser = async  (req, res) => {
+    console.log(">> req.body",req.body);
+    // lấy biến email,myname,city từ html
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+    let userId = req.body.userId;
+
+   
+    await updateUsersById(email,name,city,userId);
+
+    res.redirect('/');// khi lưu thành công nó sẽ quay lại trang home
+}
 module.exports = { 
     getHomepage,
     getAboutpage,
     getHieubui,
     postCreateUser,
     getCreatePage,
-    getUpdatePage
+    getUpdatePage,
+    postUpdateUser
  }
