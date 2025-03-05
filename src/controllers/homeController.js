@@ -65,6 +65,15 @@ const postUpdateUser = async  (req, res) => {
 
     res.redirect('/');// khi lưu thành công nó sẽ quay lại trang home
 }
+const postDeleteUser = async(req, res) => {
+    const userId = req.params.id;
+    let user =await getUsersById(userId);
+
+    res.render('delete.ejs',{userEdit : user})
+}
+const postHandleRemoveUser = (req, res) => {
+    res.send('ok')
+}
 module.exports = { 
     getHomepage,
     getAboutpage,
@@ -72,5 +81,7 @@ module.exports = {
     postCreateUser,
     getCreatePage,
     getUpdatePage,
-    postUpdateUser
+    postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser
  }
