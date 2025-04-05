@@ -23,13 +23,12 @@ configViewEngine(app);
 // khai báo route
 app.use('/',webRoutes)
 
+// test connection
+connection();
+
 //run server trên port đã khởi tạo trước đấy
 //nạp các thông tin khai báo ở trên rồi chạy (ví dụ như nạp routes)
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-// cái này có tác dụng duy nhất hỗ trọ lấy input từ html rồi gửi lên server
-// config req.body
-app.use(express.json( )); // Used to parse JSON bodies
-app.use(express.urlencoded( )); //Parse URL-encoded bodies

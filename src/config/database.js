@@ -1,26 +1,34 @@
 
 require('dotenv').config();// phải import cái này vì nếu ko imporrt vào thì nó ko lấy đc dữ liệu của env (t nghĩ thếnst mysql = require('mysql2');
-const mysql = require('mysql2/promise');// để ý cái port
+const mongoose = require('mongoose');
+var dbState = [{
+    value: 0,
+    label: "disconnected"
+},
+{
+    value: 1,
+    label: "connected"
+},
+{
+    value: 2,
+    label: "connecting"
+},
+{
+    value: 3,
+    label: "disconnecting"
+}];
 
-//test connection
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     database: process.env.DB_NAME,
-//     port: process.env.DB_PORT, // default : 3306
-//     password: process.env.DB_PASSWORD,// default: no password(empty)
-//     });
+const connection = async () =>{
 
-//test connection
-const connection = mysql.createPool({// de y cai create pool
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT, // default : 3306
-    password: process.env.DB_PASSWORD,// default: no password(empty)
-    waitForConnections: true,
-    connectionLimit: 10,// tối đa có 10 thằng kết nối tới
-    queueLimit:0
-});
-
+    // Or:
+    try {
+        
+        await mongoose.connect('mongodb://root:123456@localhost:27018');
+        const state = Number(mongoose.connection.readyState);
+        console.log(dbState.find(f => f.value == state).label, "to db"); // connected to db
+    } catch (error) {
+        // handleError(error);
+        console.log('Error connecting to MongoDB', error);
+      }
+}
 module.exports = connection;
