@@ -60,18 +60,18 @@ const postUpdateUser = async (req, res) => {
     
     // await updateUsersById(email, name, city, userId);
     await User.updateOne({_id:userId},{name:name,email:email,city:city});
-    
+
     res.redirect('/');// khi lưu thành công nó sẽ quay lại trang home
 }
 const postDeleteUser = async (req, res) => {
     const userId = req.params.id;
-    let user = await getUsersById(userId);
-
+    // let user = await getUsersById(userId);
+    let user = await User.findById(userId).exec();
     res.render('delete.ejs', { userEdit: user })
 }
 const postHandleRemoveUser = async (req, res) => {
     const id = req.body.userId;
-    await deleteUserById(id);
+    await User.deleteOne({_id:id});
 
     res.redirect('/');
 }
