@@ -44,21 +44,23 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.id;
-    let user = await getUsersById(userId);
+    // let user = await getUsersById(userId);
+    let user = await User.findById(userId).exec();
     res.render('edit.ejs', { userEdit: user })// trái :tên biến truyền qua view, phải: giá trị mình gán cho nó , x<-y
 }
 
 const postUpdateUser = async (req, res) => {
-    console.log(">> req.body", req.body);
+    
     // lấy biến email,myname,city từ html
     let email = req.body.email;
     let name = req.body.myname;
     let city = req.body.city;
     let userId = req.body.userId;
 
-
-    await updateUsersById(email, name, city, userId);
-
+    
+    // await updateUsersById(email, name, city, userId);
+    await User.updateOne({_id:userId},{name:name,email:email,city:city});
+    
     res.redirect('/');// khi lưu thành công nó sẽ quay lại trang home
 }
 const postDeleteUser = async (req, res) => {
