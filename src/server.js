@@ -5,7 +5,6 @@ const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web')
 const connection = require('./config/database')
 const { table } = require('console');
-const Kitten = require('./models/Kitten');
 
 
 // import express from 'express'; //es module
@@ -28,8 +27,8 @@ app.use('/', webRoutes);
 // test connection
 connection();
 
-const cat = new Kitten({ name: 'hoi coin card nhe e' });
-cat.save();
+// const cat = new Kitten({ name: 'hoi coin card nhe e' });
+// cat.save();
 
 //SELF RUNNING FUNCTION
 ; (async () => {
