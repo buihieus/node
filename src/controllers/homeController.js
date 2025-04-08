@@ -6,7 +6,7 @@ const User = require('../models/user');
 const getHomepage = async (req, res) => {
 
     // gọi hàm get all users
-    let results = [];
+    let results = await User.find({});
     return res.render('home.ejs', { listUsers: results }); // x<-y
 }
 
@@ -26,18 +26,14 @@ const postCreateUser = async (req, res) => {
     let city = req.body.city;
 
     console.log(">> email = ", email, 'name = ', name, 'city = ', city);
-    // hoặc let (email, name, city) = req.body;
-
-    // let [ressullts, fields] = await connection.query(
-    //     `INSERT INTO Users (email,name,city) VALUES (? , ?, ?);`, [email, name, city],
-    // );
 
     // truyền dữ liệu vào
-    await User.create({ 
-        email: email, 
-        name: name, 
-        city: city });
-    
+    await User.create({
+        email: email,
+        name: name,
+        city: city
+    });
+
     res.send("success !")
 
 }
