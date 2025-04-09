@@ -22,7 +22,7 @@ const postCreateUserAPI = async (req, res) => {
     console.log(">> email = ", email, 'name = ', name, 'city = ', city);
 
     // truyền dữ liệu vào
-    let user = await User.create({
+    let user = await User.create({//////////////
         email: email,
         name: name,
         city: city
@@ -36,7 +36,7 @@ const postCreateUserAPI = async (req, res) => {
     );
 
 }
-const postUpdateUserAPI = async (req, res) => {
+const putUpdateUserAPI = async (req, res) => {
 
     // lấy biến email,myname,city từ html
     let email = req.body.email;
@@ -54,10 +54,9 @@ const postUpdateUserAPI = async (req, res) => {
         }
     );// nhờ ré nỳ thì đường link nó mớ trở thành api
 }
-const postDeleteUserAPI = async (req, res) => {
-    const userId = req.params.id;
-    // let user = await getUsersById(userId);
-    let user = await User.findById(userId).exec();
+const DeleteUserAPI = async (req, res) => {
+    const id = req.body.userId;
+    let user = await User.deleteOne({_id:id});
     return res.status(200).json(
         {
             errorCode: 0,
@@ -68,5 +67,6 @@ const postDeleteUserAPI = async (req, res) => {
 module.exports = {
     getUsersAPI,
     postCreateUserAPI,
-    postUpdateUserAPI,
+    putUpdateUserAPI,
+    DeleteUserAPI
 }
