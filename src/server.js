@@ -3,6 +3,8 @@ const express = require('express')// commonjs
 const path = require('path')// commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web')
+const apiRoutes = require('./routes/api')
+
 const connection = require('./config/database')
 const { table } = require('console');
 
@@ -23,12 +25,7 @@ configViewEngine(app);
 
 // khai báo route
 app.use('/', webRoutes);
-
-// test connection
-connection();
-
-// const cat = new Kitten({ name: 'hoi coin card nhe e' });
-// cat.save();
+app.use('/v1/api/', apiRoutes);
 
 //SELF RUNNING FUNCTION
 ; (async () => {
