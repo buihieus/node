@@ -4,9 +4,9 @@ const path = require('path')// commonjs
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web')
 const apiRoutes = require('./routes/api')
+const fileUpload = require('express-fileupload');
 
 const connection = require('./config/database')
-const { table } = require('console');
 
 
 // import express from 'express'; //es module
@@ -23,9 +23,13 @@ app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 // config template engine
 configViewEngine(app);
 
+//config file upload
+app.use(fileUpload());
+
 // khai báo route
 app.use('/', webRoutes);
 app.use('/v1/api/', apiRoutes);
+
 
 //SELF RUNNING FUNCTION
 ; (async () => {
