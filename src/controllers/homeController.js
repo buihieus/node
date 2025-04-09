@@ -1,5 +1,4 @@
 const connection = require('../config/database');
-const { getAllUser, getUsersById, updateUsersById, deleteUserById } = require('../services/CRUD.Service');
 
 const User = require('../models/user');
 
