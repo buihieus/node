@@ -1,5 +1,5 @@
 const User = require('../models/user');
-
+const { uploadSingleFile, uploadMultipleFiles } = require('../services/fileService');
 const getUsersAPI = async (req, res) => {
 
     // gọi hàm get all users
@@ -56,7 +56,7 @@ const putUpdateUserAPI = async (req, res) => {
 }
 const DeleteUserAPI = async (req, res) => {
     const id = req.body.userId;
-    let user = await User.deleteOne({_id:id});
+    let user = await User.deleteOne({ _id: id });
     return res.status(200).json(
         {
             errorCode: 0,
@@ -64,9 +64,23 @@ const DeleteUserAPI = async (req, res) => {
         }
     );
 }
+
+const postUploadSingleFileApi =async(req, res) => {
+
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    let result = await uploadSingleFile(req.files.image);
+    console.log("result = ", result);
+
+    return res.send("ok single")
+}
 module.exports = {
     getUsersAPI,
     postCreateUserAPI,
     putUpdateUserAPI,
-    DeleteUserAPI
+    DeleteUserAPI,
+    postUploadSingleFileApi
 }
