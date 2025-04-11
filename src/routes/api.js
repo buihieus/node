@@ -1,6 +1,6 @@
 const express = require('express');
 const routerAPI = express.Router();
-const {getUsersAPI,postCreateUserAPI,putUpdateUserAPI,DeleteUserAPI,postUploadSingleFileApi} = require('../controllers/apiController')
+const {getUsersAPI,postCreateUserAPI,putUpdateUserAPI,DeleteUserAPI,postUploadSingleFileApi,postUploadMultipleFilesAPI} = require('../controllers/apiController')
 //nơi khai báo và thông báo cho express là sẽ gọi cái nào
 
 
@@ -14,5 +14,6 @@ routerAPI.delete('/users',DeleteUserAPI);
 
 routerAPI.post('/file',postUploadSingleFileApi);
 
+routerAPI.post('/files',postUploadMultipleFilesAPI);
 
 module.exports = routerAPI;// export default 
