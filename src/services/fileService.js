@@ -7,7 +7,7 @@ const uploadSingleFile = async (fileObject) => {
     // console.log(">> check fileobject: ", path.resolve(__dirname,"../public/images/upload" ));
 
     // abc.png => abc-timestamp.png
-
+    let extName = path.extname(fileObject.name)
     // get image extention
     let extension = path.extname(fileObject.name);
 
