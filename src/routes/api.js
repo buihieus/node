@@ -4,7 +4,7 @@ const {getUsersAPI,postCreateUserAPI,putUpdateUserAPI,DeleteUserAPI,postUploadSi
     } = require('../controllers/apiController')
 //nơi khai báo và thông báo cho express là sẽ gọi cái nào
 const {postCreateCustomer,postCreateArrayCustomer,getAllCustomers,putUpdateCustomers,
-    deleteACustomer} = require ('../controllers/customerController')
+    deleteACustomer,deleteArrayCustomer} = require ('../controllers/customerController')
 
 routerAPI.post('/users',postCreateUserAPI);
 
@@ -27,5 +27,6 @@ routerAPI.get('/customers',getAllCustomers);
 
 routerAPI.put('/customers',putUpdateCustomers);
 routerAPI.delete('/customers',deleteACustomer);
+routerAPI.delete('/customers-many',deleteArrayCustomer);
 
 module.exports = routerAPI;// export default 

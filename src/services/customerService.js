@@ -22,44 +22,54 @@ const createCustomerService = async (customerData) => {
 }
 
 const createArrayCustomerService = async (arr) => {
-    try{
+    try {
         let result = await customer.insertMany(arr);
         return result;
 
-    } catch(error){
+    } catch (error) {
         console.log(error);
         return null;
     }
 }
 
 const getAllCustomersService = async () => {
-    try{
+    try {
         let result = await customer.find({});
         return result;
 
-    } catch(error){
+    } catch (error) {
         console.log(error);
         return null;
     }
 }
 
 const putUpdateCustomerService = async (id, name, email, address) => {
-    try{
-        let result = await customer.updateOne({_id: id}, {name, email, address});
+    try {
+        let result = await customer.updateOne({ _id: id }, { name, email, address });
         return result;
 
-    } catch(error){
+    } catch (error) {
         console.log(error);
         return null;
     }
 }
 
 const deleteACustomerService = async (id, name, email, address) => {
-    try{
-        let result = await customer.deleteById(id);
+    try {
+        let result = await customer.findById(id);
         return result;
 
-    } catch(error){
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+const deleteArrayCustomerService = async (arrIds) => {
+    try {
+        let result = await customer.delete({ _id: { $in: arrIds } });
+        return result;
+
+    } catch (error) {
         console.log(error);
         return null;
     }
@@ -69,5 +79,6 @@ module.exports = {
     createArrayCustomerService,
     getAllCustomersService,
     putUpdateCustomerService,
-    deleteACustomerService
+    deleteACustomerService,
+    deleteArrayCustomerService
 }

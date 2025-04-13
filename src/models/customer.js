@@ -14,7 +14,18 @@ const customerSchema = new mongoose.Schema({
 
 
 },
-    { timestamps: true }
+    {
+        timestamps: true,// create at,update at
+        // statics: {
+        //     findByHieu(name) {
+        //         return this.find({ name: new RegExp(name, 'i') });
+        //     },
+        //     findByHieuBui(name) {
+        //         return this.find({ name: new RegExp(name, 'i') });
+        //     },
+        // }
+    }
+
 );
 
 
