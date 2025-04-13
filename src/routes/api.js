@@ -29,4 +29,10 @@ routerAPI.put('/customers',putUpdateCustomers);
 routerAPI.delete('/customers',deleteACustomer);
 routerAPI.delete('/customers-many',deleteArrayCustomer);
 
+routerAPI.get('/info',(req,res)=>{
+    console.log(">> check req.query",req.query);
+    return res.status(200).json({
+    data: req.query
+    });
+});
 module.exports = routerAPI;// export default 
