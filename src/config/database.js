@@ -1,5 +1,5 @@
 
-require('dotenv').config();// phải import cái này vì nếu ko imporrt vào thì nó ko lấy đc dữ liệu của env (t nghĩ thếnst mysql = require('mysql2');
+require('dotenv').config();// phải import cái này vì nếu ko import vào thì nó ko lấy đc dữ liệu của env (t nghĩ thếnst mysql = require('mysql2');
 const mongoose = require('mongoose');
 const dbState = [{
     value: 0,
