@@ -3,7 +3,7 @@ const routerAPI = express.Router();
 const {getUsersAPI,postCreateUserAPI,putUpdateUserAPI,DeleteUserAPI,postUploadSingleFileApi,postUploadMultipleFilesAPI,
     } = require('../controllers/apiController')
 //nơi khai báo và thông báo cho express là sẽ gọi cái nào
-const {postCreateCustomer,postCreateArrayCustomer} = require ('../controllers/customerController')
+const {postCreateCustomer,postCreateArrayCustomer,getAllCustomers} = require ('../controllers/customerController')
 
 routerAPI.post('/users',postCreateUserAPI);
 
@@ -22,5 +22,6 @@ routerAPI.post('/customers',postCreateCustomer);
 
 routerAPI.post('/customers-many',postCreateArrayCustomer);
 
+routerAPI.get('/customers',getAllCustomers);
 
 module.exports = routerAPI;// export default 
