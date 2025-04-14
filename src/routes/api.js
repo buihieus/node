@@ -35,4 +35,11 @@ routerAPI.get('/info',(req,res)=>{
     data: req.query
     });
 });
+
+routerAPI.get('/info/:name/:address',(req,res)=>{
+    console.log(">> check req params",req.params);
+    return res.status(200).json({
+    data: req.params
+    });
+});
 module.exports = routerAPI;// export default 
